@@ -60,11 +60,11 @@
         th:if="${#fields.hasErrors('ccExpiration')}"
         th:errors="*{ccExpiration}">CC Expiration Error</span>
   <br/>
-  <label for="ccCVV">CVV: </label>
-  <input type="text" th:field="*{ccCVV}"/>
+  <label for="ccCvv">CVV: </label>
+  <input type="text" th:field="*{ccCvv}"/>
   <span class="validationError"
-        th:if="${#fields.hasErrors('ccCVV')}"
-        th:errors="*{ccCVV}">CC VV Error</span>
+        th:if="${#fields.hasErrors('ccCvv')}"
+        th:errors="*{ccCvv}">CC VV Error</span>
   <br/>
   <input type="submit" value="Submit order"/>
 </form>

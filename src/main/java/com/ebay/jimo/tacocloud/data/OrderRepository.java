@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Order> findByZip(String zip);
-    List<Order> readOrdersByZipAndPlaceAtBetween(String zip, Date startDate, Date endDate);
-    List<Order> findByCityOrderByPlaceAt(String city);
+    List<Order> readOrdersByZipAndPlacedAtBetween(String zip, Date startDate, Date endDate);
+    List<Order> findByCityOrderByPlacedAt(String city);
 }

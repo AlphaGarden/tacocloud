@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,37 +27,31 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date placeAt;
     @NotBlank(message = "Name is required.")
-    @Column(name = "deliverName")
     private String name;
     @NotBlank(message = "Street is required.")
-    @Column(name = "deliverStreet")
     private String street;
     @NotBlank(message = "City is required.")
-    @Column(name = "deliverCity")
     private String city;
     @NotBlank(message = "State is required.")
-    @Column(name = "deliverState")
     private String state;
     @NotBlank(message = "Zip code is required.")
-    @Column(name = "deliverZip")
     private String zip;
     @CreditCardNumber(message = "Not a valid credit card number.")
     private String ccNumber;
     @Pattern(regexp = "^(0[1-9]|1[0-2])([\\\\/])([1-9][0-9])$", message = "Must be formatted MM/YY.")
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
-    private String ccCVV;
+    private String ccCvv;
     @ManyToMany(targetEntity = Taco.class)
     public List<Taco> tacos = new ArrayList<>();
-
+    private Date placedAt;
     public void addDesign(Taco taco) {
         this.tacos.add(taco);
     }
 
     @PrePersist
     void placeAt() {
-        this.placeAt = new Date();
+        this.placedAt = new Date();
     }
 }

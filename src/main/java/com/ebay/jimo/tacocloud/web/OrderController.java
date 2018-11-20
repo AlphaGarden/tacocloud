@@ -5,7 +5,6 @@ import com.ebay.jimo.tacocloud.domain.Order;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +34,6 @@ public class OrderController {
         if (errors.hasErrors()){
             return "orderForm";
         }
-        log.info("Order submitted: " + order);
         orderRepo.save(order);
         sessionStatus.setComplete(); // Reset the session to clean the object out form session since you don't need it anymore.
         return "redirect:/";
