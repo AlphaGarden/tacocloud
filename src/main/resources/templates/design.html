@@ -67,9 +67,14 @@
           th:if="${#fields.hasErrors('name')}"
           th:errors="*{name}">Name Error</span>
     <br/>
+    <!--Add csrf token to prevent cross site forgery.-->
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
 
     <button>Submit your taco</button>
   </div>
+</form>
+<form method="POST" th:action="@{/logout}">
+  <input type="submit" value="Logout"/>
 </form>
 </body>
 </html>
