@@ -35,6 +35,7 @@ create table if not exists Taco_Order (
   cc_expiration varchar(5) not null,
   cc_cvv varchar(3) not null,
   placed_at timestamp not null,
+  placed_by varchar(4) not null,
   primary key (id)
 );
 create table if not exists Taco_Order_Tacos (
@@ -45,7 +46,7 @@ alter table Taco_Order_Tacos
   add foreign key (order_id) references Taco_Order(id);
 alter table Taco_Order_Tacos
   add foreign key (tacos_id) references Taco(id);
-create table if not exists user (
+create table if not exists User (
   id varchar(4),
   fullname varchar(10) not null,
   username varchar(20) not null,

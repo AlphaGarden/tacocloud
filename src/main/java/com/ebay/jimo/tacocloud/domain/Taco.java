@@ -17,21 +17,22 @@ import lombok.Data;
 @Entity
 public class Taco {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @NotNull
-    @Size(min = 5, message = "Name must be at least 5 characters long.")
-    private String name;
-    private Date createdAt;
+  @NotNull
+  @Size(min = 5, message = "Name must be at least 5 characters long.")
+  private String name;
+  private Date createdAt;
 
-    @ManyToMany(targetEntity = Ingredient.class) // a taco can have different ingredients, an ingredient can be a part of different tacos.
-    @Size(min = 1, message = "You must choose at least 1 ingredient.")
-    private List<Ingredient> ingredients;
+  @ManyToMany(targetEntity = Ingredient.class) // a taco can have different ingredients, an ingredient can be a part of different tacos.
+  @Size(min = 1, message = "You must choose at least 1 ingredient.")
+  private List<Ingredient> ingredients;
 
-    @PrePersist // To pre-persist the date info
-    void createdAt() {
-        this.createdAt = new Date();
-    }
+  @PrePersist
+    // To pre-persist the date info
+  void createdAt() {
+    this.createdAt = new Date();
+  }
 }

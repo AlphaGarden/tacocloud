@@ -14,13 +14,14 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) // JPA requires a no-arguments constructor. Set all the value to be null
 @Entity
 public class Ingredient {
-    @Id
-    private final String id;
-    private final String name;
-    @Enumerated(EnumType.STRING)
-    private final Type type;
 
-    public enum Type {
-        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
-    }
+  @Id
+  private final String id;
+  private final String name;
+  @Enumerated(EnumType.STRING)
+  private final Type type;
+
+  public enum Type {
+    WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
+  }
 }
